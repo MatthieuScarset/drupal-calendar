@@ -13,13 +13,13 @@ Install [Lando](https://docs.lando.dev/drupal/) on your machine.
 Click on the button _Use this template_ to generate your own project, then:
 
 ```bash
-git clone git@github.com:<UsernameOrOrganization>/drupal-template.git myproject
+git clone git@github.com:<UsernameOrOrganization>/drupal-template.git drupal-calendar
 
-cd myproject
+cd drupal-calendar
 
-# Replace the project name (i.e. 'myproject').
-code .env.example    # ->  DRUSH_OPTIONS_URI=https://myproject.lndo.site
-code .lando.yml      # ->  name: myproject
+# Replace the project name (i.e. 'drupal-calendar').
+code .env.example    # ->  DRUSH_OPTIONS_URI=https://drupal-calendar.lndo.site
+code .lando.yml      # ->  name: drupal-calendar
 
 # Create your env file now
 cp .env.example .env

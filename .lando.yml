@@ -1,4 +1,4 @@
-name: myproject
+name: drupal-calendar
 recipe: drupal10
 services:
   appserver:
