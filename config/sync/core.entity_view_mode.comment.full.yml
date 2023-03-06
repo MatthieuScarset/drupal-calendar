@@ -1,0 +1,12 @@
+uuid: e1fd0e4d-6dfd-4fa2-b493-dab6184d8e4e
+langcode: en
+status: false
+dependencies:
+  module:
+    - comment
+_core:
+  default_config_hash: K7eNlfU7NEUajz01wItywZklr2oaPgL6s1_97fmDXLA
+id: comment.full
+label: 'Full comment'
+targetEntityType: comment
+cache: true

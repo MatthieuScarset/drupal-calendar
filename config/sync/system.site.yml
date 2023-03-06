@@ -1,14 +1,14 @@
 _core:
-  default_config_hash: l58O_yEXSo-SeJi19LXdzTU1tNJG3lmnIhCitRkM1tk
+  default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
 langcode: en
-uuid: 38dd17d2-5990-4904-b4a8-272b7ce6dbf4
-name: 'Drush Site-Install'
+uuid: e0249f86-628f-4a44-b056-6930534a0c58
+name: 'Drupal Calendar'
 mail: admin@example.com
 slogan: ''
 page:
   403: ''
   404: ''
-  front: /user/login
+  front: /node
 admin_compact_mode: false
 weight_select_max: 100
 default_langcode: en
