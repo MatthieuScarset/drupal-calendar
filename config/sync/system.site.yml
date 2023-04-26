@@ -1,8 +1,8 @@
 _core:
   default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
 langcode: en
-uuid: e0249f86-628f-4a44-b056-6930534a0c58
-name: 'Drupal Calendar'
+uuid: 9cc59a05-688d-4d8f-8398-9b34a5df2df2
+name: 'Drush Site-Install'
 mail: admin@example.com
 slogan: ''
 page:

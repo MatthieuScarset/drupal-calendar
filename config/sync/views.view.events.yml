@@ -1,15 +1,17 @@
-uuid: e7cb587d-17c4-4ad0-9368-a6443b789043
+uuid: d1f1d5c0-6d0a-4664-a44e-f69df2a41136
 langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_smart_date_range
     - system.menu.main
   module:
     - calendar_view
     - node
+    - smart_date
     - user
-id: calendar
-label: Calendar
+id: events
+label: Events
 module: views
 description: ''
 tag: ''
@@ -22,7 +24,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: Calendar
+      title: Events
       fields:
         title:
           id: title
@@ -138,12 +140,81 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        field_smart_date_range:
+          id: field_smart_date_range
+          table: node__field_smart_date_range
+          field: field_smart_date_range
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: smartdate_default
+          settings:
+            timezone_override: ''
+            format: default
+            force_chronological: false
+            add_classes: false
+            time_wrapper: true
+            localize: false
+          group_column: value
+          group_columns: {  }
+          group_rows: false
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
       pager:
-        type: calendar
+        type: calendar_week
         options:
           offset: 0
-          month_date_format: F
-          display_reset: 0
+          label_format: '\W\e\e\k W'
+          use_previous_next: 0
+          display_reset: 1
       exposed_form:
         type: basic
         options:
@@ -173,37 +244,32 @@ display:
           entity_type: node
           entity_field: created
           plugin_id: date
-          order: DESC
+          order: ASC
           expose:
             label: ''
             field_identifier: ''
           exposed: false
           granularity: second
       arguments: {  }
-      filters:
-        status:
-          id: status
-          table: node_field_data
-          field: status
-          entity_type: node
-          entity_field: status
-          plugin_id: boolean
-          value: '1'
-          group: 1
-          expose:
-            operator: ''
+      filters: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+          2: AND
       style:
-        type: calendar
+        type: calendar_week
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
-          calendar_display_rows: 0
+          calendar_display_rows: 1
           calendar_fields:
             created: created
+            field_smart_date_range: field_smart_date_range
           calendar_weekday_start: '1'
-          calendar_sort_order: ASC
-          calendar_timestamp: 'this month'
+          calendar_timestamp: today
+          calendar_work_week: 0
       row:
         type: fields
         options:
@@ -216,7 +282,7 @@ display:
         options:
           query_comment: ''
           disable_sql_rewrite: false
-          distinct: false
+          distinct: true
           replica: false
           query_tags: {  }
       relationships: {  }
@@ -230,7 +296,8 @@ display:
         - 'languages:language_interface'
         - 'user.node_grants:view'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:field.storage.node.field_smart_date_range'
   page_1:
     id: page_1
     display_title: Page
@@ -238,10 +305,10 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: calendar
+      path: events
       menu:
         type: normal
-        title: Calendar
+        title: Events
         menu_name: main
         parent: ''
     cache_metadata:
@@ -251,4 +318,5 @@ display:
         - 'languages:language_interface'
         - 'user.node_grants:view'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:field.storage.node.field_smart_date_range'

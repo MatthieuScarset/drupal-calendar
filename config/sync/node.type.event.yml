@@ -1,0 +1,18 @@
+uuid: 95230014-b105-47df-bdb1-a27e80cd0389
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Event
+type: event
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

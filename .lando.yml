@@ -6,3 +6,13 @@ services:
     xdebug: debug
     config:
       php: .vscode/php.ini
+    overrides:
+      environment:
+        SIMPLETEST_BASE_URL: "http://drupal-calendar.lndo.site"
+        SIMPLETEST_DB: "sqlite://localhost/sites/default/files/db.sqlite"
+  phpmyadmin:
+    type: phpmyadmin
+tooling:
+  test:
+    service: appserver
+    cmd: "php /app/vendor/bin/phpunit -c /app/phpunit.xml"

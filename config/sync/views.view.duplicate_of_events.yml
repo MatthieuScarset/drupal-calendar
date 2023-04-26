@@ -1,17 +1,17 @@
-uuid: d3f826a8-e5aa-453f-8e4e-03a160729864
+uuid: a0dc3f8b-a0e7-4218-b939-c2d1124ac2be
 langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_smart_date_range
+    - node.type.event
     - system.menu.main
   module:
-    - calendar_view
     - node
+    - smart_date
     - user
-_core:
-  default_config_hash: HFL9DbWXBAXP6iEjgSjgsm4pP-iG9cr8XKQ2mrqBZO4
-id: editorial_calendar
-label: 'Editorial calendar'
+id: duplicate_of_events
+label: 'Duplicate of Events'
 module: views
 description: ''
 tag: ''
@@ -24,7 +24,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Editorial calendar'
+      title: Events
       fields:
         title:
           id: title
@@ -73,15 +73,13 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        created:
-          id: created
-          table: node_field_data
-          field: created
+        field_smart_date_range:
+          id: field_smart_date_range
+          table: node__field_smart_date_range
+          field: field_smart_date_range
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          entity_field: created
           plugin_id: field
           label: ''
           exclude: false
@@ -125,14 +123,17 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: timestamp
+          type: smartdate_default
           settings:
-            date_format: html_time
-            custom_date_format: ''
-            timezone: ''
+            timezone_override: ''
+            format: default
+            force_chronological: false
+            add_classes: false
+            time_wrapper: true
+            localize: false
           group_column: value
           group_columns: {  }
-          group_rows: true
+          group_rows: false
           delta_limit: 0
           delta_offset: 0
           delta_reversed: false
@@ -141,11 +142,26 @@ display:
           separator: ', '
           field_api_classes: false
       pager:
-        type: calendar
+        type: full
         options:
           offset: 0
-          month_date_format: F
-          display_reset: 1
+          items_per_page: 10
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
       exposed_form:
         type: basic
         options:
@@ -194,23 +210,74 @@ display:
           group: 1
           expose:
             operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-        created:
-          id: created
+        type:
+          id: type
           table: node_field_data
-          field: created
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            event: event
+        field_smart_date_range_end_value:
+          id: field_smart_date_range_end_value
+          table: node__field_smart_date_range
+          field: field_smart_date_range_end_value
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          entity_field: created
+          plugin_id: date
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: '+1 day'
+            type: offset
+            granularity: second
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_smart_date_range_value:
+          id: field_smart_date_range_value
+          table: node__field_smart_date_range
+          field: field_smart_date_range_value
+          relationship: none
+          group_type: group
+          admin_label: ''
           plugin_id: date
           operator: '>='
           value:
             min: ''
             max: ''
-            value: '-1 year'
+            value: '-3 days'
             type: offset
             granularity: second
           group: 1
@@ -245,17 +312,37 @@ display:
             default_group_multiple: {  }
             group_items: {  }
       style:
-        type: calendar
+        type: table
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
-          calendar_display_rows: 0
-          calendar_fields:
-            created: created
-          calendar_weekday_start: '1'
-          calendar_sort_order: DESC
-          calendar_timestamp: 'this month'
+          uses_fields: true
+          columns:
+            title: title
+            field_smart_date_range: field_smart_date_range
+          default: '-1'
+          info:
+            title:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_smart_date_range:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          override: true
+          sticky: false
+          summary: ''
+          empty_table: false
+          caption: ''
+          description: ''
       row:
         type: fields
         options:
@@ -272,7 +359,6 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
-      use_ajax: true
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -281,9 +367,11 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:field.storage.node.field_smart_date_range'
   page_1:
     id: page_1
     display_title: Page
@@ -291,17 +379,23 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: editorial-calendar
+      path: events-table
       menu:
         type: normal
-        title: 'Editorial calendar'
+        title: 'Events (table)'
+        description: ''
+        weight: 0
+        expanded: false
         menu_name: main
         parent: ''
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:field.storage.node.field_smart_date_range'
