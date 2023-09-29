@@ -1,0 +1,14 @@
+uuid: ecb99ac6-7dc8-48e6-abc6-f0654f40ceb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.feed
+  module:
+    - user
+id: user_remove_role_action.feed
+label: 'Remove the Feed role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: feed

@@ -1,0 +1,8 @@
+name: Drucal
+description: Display events from drupal.org
+type: module
+core_version_requirement: ^10
+dependencies:
+  - drupal:node
+  - calendar_view:calendar_view
+  - migrate_plus:migrate_plus

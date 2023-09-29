@@ -1,0 +1,18 @@
+_settings:
+  field_prefix: ''
+dates:
+  name: dates
+  label: Date of event
+  type: daterange
+  force: true
+  required: false
+  bundles:
+    event:
+      label: Dates
+      displays:
+        form:
+          default:
+            region: content
+        view:
+          default:
+            region: hidden

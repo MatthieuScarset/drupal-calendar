@@ -1,35 +1,40 @@
-uuid: 83d0c9af-30d1-4162-a149-e74028c81b35
+uuid: b0069481-94f8-4ce8-ac15-bf60c5051abc
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.event.field_smart_date_range
+    - field.field.node.event.body
+    - field.field.node.event.dates
     - node.type.event
   module:
-    - smart_date
+    - datetime_range
+    - text
     - user
 id: node.event.default
 targetEntityType: node
 bundle: event
 mode: default
 content:
-  field_smart_date_range:
-    type: smartdate_default
+  body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  dates:
+    type: daterange_default
     label: above
     settings:
       timezone_override: ''
       format_type: medium
-      format: default
-      force_chronological: false
-      add_classes: false
-      time_wrapper: true
-      localize: false
+      separator: '-'
     third_party_settings: {  }
-    weight: 101
+    weight: 0
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 2
     region: content
 hidden: {  }

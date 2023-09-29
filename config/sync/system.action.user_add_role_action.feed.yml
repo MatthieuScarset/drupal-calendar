@@ -1,0 +1,14 @@
+uuid: d5e56077-92da-48e6-83dd-b1c9a6dfe10c
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.feed
+  module:
+    - user
+id: user_add_role_action.feed
+label: 'Add the Feed role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: feed

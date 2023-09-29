@@ -1,22 +1,32 @@
-uuid: 0df3da97-3629-4673-8e29-415cfea6830e
+uuid: d301a283-2c1e-4412-9519-388d336e5072
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.event.field_smart_date_range
+    - field.field.node.event.body
+    - field.field.node.event.dates
     - node.type.event
   module:
+    - text
     - user
 id: node.event.teaser
 targetEntityType: node
 bundle: event
 mode: teaser
 content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
     weight: 100
     region: content
 hidden:
-  field_smart_date_range: true
+  dates: true

@@ -1,0 +1,9 @@
+uuid: eaba5734-cae5-4ff4-b574-cd16342c3ded
+langcode: en
+status: true
+dependencies: {  }
+id: feed
+label: Feed
+weight: 2
+is_admin: null
+permissions: {  }

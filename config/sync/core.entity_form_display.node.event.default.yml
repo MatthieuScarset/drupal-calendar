@@ -1,44 +1,38 @@
-uuid: 799c3669-464e-41d0-adcb-a41037953a9c
+uuid: 1a85c06e-21b1-4c2a-8418-03e2a9a6ab10
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.event.field_smart_date_range
+    - field.field.node.event.body
+    - field.field.node.event.dates
     - node.type.event
   module:
-    - path
-    - smart_date
+    - datetime_range
+    - text
 id: node.event.default
 targetEntityType: node
 bundle: event
 mode: default
 content:
+  body:
+    type: text_textarea_with_summary
+    weight: 121
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_smart_date_range:
-    type: smartdate_inline
-    weight: 121
-    region: content
-    settings:
-      modal: false
-      default_duration: 60
-      default_duration_increments: |-
-        30
-        60|1 hour
-        90
-        120|2 hours
-        custom
-      show_extra: false
-      hide_date: true
-      separator: to
-    third_party_settings: {  }
-  path:
-    type: path
-    weight: 30
+  dates:
+    type: daterange_default
+    weight: 124
     region: content
     settings: {  }
     third_party_settings: {  }

@@ -1,0 +1,10 @@
+uuid: 7636cf95-497a-4e8e-933e-eaa00d7928b6
+langcode: en
+status: true
+dependencies: {  }
+id: events
+label: events
+description: ''
+source_type: null
+module: null
+shared_configuration: null
