@@ -3,12 +3,12 @@ _core:
 langcode: en
 uuid: 277e8ead-bcad-4762-b769-7ce1693e4247
 name: Drucal
-mail: admin@drucal.com
+mail: admin@example.com
 slogan: ''
 page:
   403: ''
   404: ''
-  front: /user/login
+  front: /calendar
 admin_compact_mode: false
 weight_select_max: 100
 default_langcode: en

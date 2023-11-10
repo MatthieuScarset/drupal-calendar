@@ -1,19 +1,19 @@
-uuid: 5d3fb6ff-bef6-46fa-9269-d8d0eca58af9
+uuid: 823a518f-13b5-4de5-99e0-c26dc9df4241
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.dates
     - node.type.event
-    - system.menu.main
   module:
+    - address
     - calendar_view
     - datetime
     - datetime_range
     - node
     - user
-id: events
-label: Events
+id: calendar
+label: Calendar
 module: views
 description: ''
 tag: ''
@@ -26,7 +26,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: Events
+      title: Calendar
       fields:
         title:
           id: title
@@ -75,15 +75,16 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        dates:
-          id: dates
-          table: node__dates
-          field: dates
+        view_node:
+          id: view_node
+          table: node
+          field: view_node
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: field
-          label: Date(s)
+          entity_type: node
+          plugin_id: entity_link
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -116,7 +117,59 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: view
+          output_url_as_text: false
+          absolute: false
+        dates:
+          id: dates
+          table: node__dates
+          field: dates
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -128,7 +181,7 @@ display:
           type: daterange_default
           settings:
             timezone_override: ''
-            format_type: long
+            format_type: medium
             separator: '-'
           group_column: value
           group_columns: {  }
@@ -144,9 +197,9 @@ display:
         type: calendar_month
         options:
           offset: 0
-          label_format: F
-          use_previous_next: 1
           display_reset: 1
+          use_previous_next: 0
+          label_format: F
       exposed_form:
         type: basic
         options:
@@ -166,16 +219,14 @@ display:
         options: {  }
       empty: {  }
       sorts:
-        created:
-          id: created
-          table: node_field_data
-          field: created
+        dates_value:
+          id: dates_value
+          table: node__dates
+          field: dates_value
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          entity_field: created
-          plugin_id: date
+          plugin_id: datetime
           order: DESC
           expose:
             label: ''
@@ -294,24 +345,141 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        address_country_code:
+          id: address_country_code
+          table: node__address
+          field: address_country_code
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: country
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: address_country_code_op
+            label: Country
+            description: ''
+            use_operator: false
+            operator: address_country_code_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: country
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        address_locality:
+          id: address_locality
+          table: node__address
+          field: address_locality
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: allwords
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: address_locality_op
+            label: City
+            description: ''
+            use_operator: false
+            operator: address_locality_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: city
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+          operator: allwords
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: Title
+            description: ''
+            use_operator: false
+            operator: title_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: title
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       style:
         type: calendar_month
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
-          calendar_display_rows: 1
+          calendar_display_rows: 0
           calendar_fields:
             dates: dates
           calendar_weekday_start: '1'
-          calendar_timestamp: 'this month'
+          calendar_timestamp: today
       row:
         type: fields
-        options:
-          default_field_elements: true
-          inline: {  }
-          separator: ''
-          hide_empty: false
       query:
         type: views_query
         options:
@@ -330,6 +498,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -341,17 +510,13 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: events
-      menu:
-        type: normal
-        title: Events
-        menu_name: main
-        parent: ''
+      path: calendar
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - 'user.node_grants:view'
         - user.permissions
       tags:

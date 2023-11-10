@@ -1,18 +1,31 @@
 _settings:
   field_prefix: ''
 dates:
-  name: dates
-  label: Date of event
-  type: daterange
   force: true
+  name: dates
+  label: 'Date of event'
+  type: daterange
   required: false
   bundles:
     event:
       label: Dates
-      displays:
-        form:
-          default:
-            region: content
-        view:
-          default:
-            region: hidden
+body:
+  force: true
+  name: body
+  label: 'About the event'
+  type: body
+  bundles:
+    event:
+      label: Body
+address:
+  force: true
+  name: address
+  label: "Event's location"
+  type: address
+  bundles:
+    event: {}
+#logo:
+#field_event_type:
+#field_event_format:
+#url:
+#language:

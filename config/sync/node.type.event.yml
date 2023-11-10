@@ -1,4 +1,4 @@
-uuid: bf023cc6-9acb-4493-9280-4f326e233775
+uuid: 2947fb81-a97e-4c25-8fe7-e81fe5060d99
 langcode: en
 status: true
 dependencies: {  }
@@ -6,6 +6,6 @@ name: Event
 type: event
 description: ''
 help: ''
-new_revision: false
-preview_mode: 0
-display_submitted: false
+new_revision: true
+preview_mode: 1
+display_submitted: true

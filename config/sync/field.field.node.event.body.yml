@@ -1,4 +1,4 @@
-uuid: 5f8bce05-a764-413d-8011-341aa55f6e4c
+uuid: bf554723-63ca-4014-9f5e-319aeae2516b
 langcode: en
 status: true
 dependencies:
@@ -11,13 +11,14 @@ id: node.event.body
 field_name: body
 entity_type: node
 bundle: event
-label: Description
-description: ''
+label: 'About the event'
+description: null
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  display_summary: true
+  display_summary: false
   required_summary: false
+  allowed_formats: {  }
 field_type: text_with_summary

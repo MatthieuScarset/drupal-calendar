@@ -10,8 +10,6 @@ services:
       environment:
         SIMPLETEST_BASE_URL: "http://drupal-calendar.lndo.site"
         SIMPLETEST_DB: "sqlite://localhost/sites/default/files/db.sqlite"
-  phpmyadmin:
-    type: phpmyadmin
 tooling:
   test:
     service: appserver

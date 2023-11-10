@@ -1,9 +1,11 @@
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 module:
+  address: 0
   block: 0
   breakpoint: 0
   calendar_view: 0
+  calendar_view_multiday: 0
   coffee: 0
   config: 0
   datetime: 0
@@ -14,16 +16,23 @@ module:
   field_create: 0
   field_ui: 0
   filter: 0
+  language: 0
+  link: 0
   migrate: 0
   migrate_plus: 0
   mysql: 0
   node: 0
   page_cache: 0
   path_alias: 0
+  sqlite: 0
   system: 0
+  taxonomy: 0
   text: 0
   toolbar: 0
+  update: 0
+  upgrade_status: 0
   user: 0
+  content_translation: 10
   views: 10
   minimal: 1000
 theme:

@@ -1,23 +1,8 @@
-uuid: 712e4f85-0ef8-4188-a6e8-adb4be8e1101
+uuid: 1de56fbe-ccf8-424d-8236-2b56558ef671
 langcode: en
 status: true
 dependencies: {  }
 name: HTML
 format: html
 weight: 0
-filters:
-  filter_htmlcorrector:
-    id: filter_htmlcorrector
-    provider: filter
-    status: true
-    weight: 10
-    settings: {  }
-  filter_html:
-    id: filter_html
-    provider: filter
-    status: true
-    weight: -10
-    settings:
-      allowed_html: "<a href hreflang> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type='1 A I'> <li> <dl> <dt> <dd> <h2 id='jump-*'> <h3 id> <h4 id> <h5 id> <h6 id>"
-      filter_html_help: true
-      filter_html_nofollow: false
+filters: {  }

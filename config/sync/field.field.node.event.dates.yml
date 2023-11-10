@@ -1,4 +1,4 @@
-uuid: 2d5928f5-94c1-4dc7-bb06-e02afef8a3f9
+uuid: 15b8a71e-6d0a-475a-b974-a7f8525d9118
 langcode: en
 status: true
 dependencies:
@@ -12,7 +12,7 @@ field_name: dates
 entity_type: node
 bundle: event
 label: 'Date of event'
-description: ''
+description: null
 required: false
 translatable: true
 default_value: {  }

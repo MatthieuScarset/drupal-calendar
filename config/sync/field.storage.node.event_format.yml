@@ -1,0 +1,20 @@
+uuid: 5c4d6921-ecf6-4144-8242-441d57dc6048
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.event_format
+field_name: event_format
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

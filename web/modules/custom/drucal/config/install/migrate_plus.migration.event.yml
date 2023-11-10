@@ -1,5 +1,5 @@
 id: event
-label: 'Event from D7 API (JSON)'
+label: 'Event from drupal.org API (JSON)'
 migration_group: events
 migration_tags:
   - json
@@ -7,10 +7,12 @@ source:
   plugin: url
   data_fetcher_plugin: http
   data_parser_plugin: json
-  # include_raw_data: true
   track_changes: true
+  source_url: 'https://www.drupal.org/api-d7/node.json?type=event'
   urls:
-    - 'https://www.drupal.org/api-d7/node.json?type=event&page=14'
+    callback: drucal_get_urls_to_import
+  #include_raw_data: true
+  skip_count: true
   item_selector: list
   fields:
     -
@@ -33,6 +35,34 @@ source:
       name: event_end
       label: 'Event end'
       selector: field_date_of_event/value2
+    -
+      name: country
+      label: 'Event address (country)'
+      selector: field_event_address/country
+    -
+      name: city
+      label: 'Event address (city)'
+      selector: field_event_address/locality
+    -
+      name: event_type
+      label: 'Event end'
+      selector: field_event_type
+    -
+      name: event_status
+      label: 'Event status'
+      selector: field_event_status
+    -
+      name: event_format
+      label: 'Event format'
+      selector: field_event_format
+    -
+      name: link
+      label: 'Link'
+      selector: url
+    -
+      name: language
+      label: 'Language'
+      selector: language
   ids:
     unique_id:
       type: integer
@@ -51,8 +81,6 @@ process:
   body/format:
       plugin: default_value
       default_value: 'html'
-  # Date values are preprocessed.
-  # @see drucal_migrate_event_prepare_row().
   dates/value:
     plugin: format_date
     from_format: U
@@ -63,6 +91,31 @@ process:
     from_format: U
     to_format: 'Y-m-d\TH:i:s'
     source: 'event_end'
+  address/country_code: country
+  address/locality: city
+  event_type:
+    source: event_type
+    plugin: entity_generate
+    entity_type: taxonomy_term
+    value_key: name
+    bundle_key: vid
+    bundle: event_type
+  event_status:
+    source: event_status
+    plugin: entity_generate
+    entity_type: taxonomy_term
+    value_key: name
+    bundle_key: vid
+    bundle: event_status
+  event_format:
+    source: event_format
+    plugin: entity_generate
+    entity_type: taxonomy_term
+    value_key: name
+    bundle_key: vid
+    bundle: event_format
+  link: link
+  langcode: language
 destination:
   plugin: 'entity:node'
 migration_dependencies: {  }

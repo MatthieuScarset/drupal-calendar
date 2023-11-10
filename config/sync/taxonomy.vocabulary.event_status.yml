@@ -1,0 +1,8 @@
+uuid: be7e649f-a356-4956-9e22-11e2454d483e
+langcode: en
+status: true
+dependencies: {  }
+name: 'Event status'
+vid: event_status
+description: ''
+weight: 0
