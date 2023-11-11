@@ -1,5 +1,7 @@
 name: drucal
 recipe: drupal10
+config:
+  php: '8.2'
 services:
   appserver:
     webroot: web
