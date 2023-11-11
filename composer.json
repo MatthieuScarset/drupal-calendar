@@ -32,6 +32,7 @@
         "drupal/field_create": "^1.0",
         "drupal/migrate_plus": "^6.0",
         "drupal/paragraphs": "^1.15",
+        "drupal/queue_ui": "^3.1",
         "drupal/shield": "^1.7",
         "drupal/smart_date": "^3.7",
         "drupal/upgrade_status": "^4.0",

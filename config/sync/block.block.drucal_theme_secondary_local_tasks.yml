@@ -1,0 +1,22 @@
+uuid: 9c39b35e-0c14-4387-9961-d4487d0dcf95
+langcode: en
+status: true
+dependencies:
+  theme:
+    - drucal_theme
+_core:
+  default_config_hash: 2L0geP-ixCbCkEpW6BVF6H7vDUZN4ea07_Y9CociQm4
+id: drucal_theme_secondary_local_tasks
+theme: drucal_theme
+region: content
+weight: -1
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Secondary tabs'
+  label_display: '0'
+  provider: core
+  primary: false
+  secondary: true
+visibility: {  }

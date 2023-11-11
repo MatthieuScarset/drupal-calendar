@@ -5,5 +5,5 @@ dependencies: {  }
 id: admin
 label: Admin
 weight: 2
-is_admin: true
+is_admin: null
 permissions: {  }

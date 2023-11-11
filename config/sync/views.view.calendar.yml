@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.dates
     - node.type.event
+    - system.menu.main
     - taxonomy.vocabulary.event_format
     - taxonomy.vocabulary.event_status
     - taxonomy.vocabulary.event_type
@@ -259,6 +260,7 @@ display:
           plugin_id: bundle
           value:
             event: event
+          group: 1
         dates_value:
           id: dates_value
           table: node__dates
@@ -349,86 +351,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        address_country_code:
-          id: address_country_code
-          table: node__address
-          field: address_country_code
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: country
-          operator: in
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: address_country_code_op
-            label: Country
-            description: ''
-            use_operator: false
-            operator: address_country_code_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: country
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-        address_locality:
-          id: address_locality
-          table: node__address
-          field: address_locality
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: string
-          operator: allwords
-          value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: address_locality_op
-            label: City
-            description: ''
-            use_operator: false
-            operator: address_locality_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: city
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-            placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
         title:
           id: title
           table: node_field_data
@@ -441,7 +363,7 @@ display:
           plugin_id: string
           operator: allwords
           value: ''
-          group: 1
+          group: 2
           exposed: true
           expose:
             operator_id: title_op
@@ -481,7 +403,7 @@ display:
           plugin_id: taxonomy_index_tid
           operator: or
           value: {  }
-          group: 1
+          group: 3
           exposed: true
           expose:
             operator_id: event_format_target_id_op
@@ -528,7 +450,7 @@ display:
           plugin_id: taxonomy_index_tid
           operator: or
           value: {  }
-          group: 1
+          group: 3
           exposed: true
           expose:
             operator_id: event_status_target_id_op
@@ -575,7 +497,7 @@ display:
           plugin_id: taxonomy_index_tid
           operator: or
           value: {  }
-          group: 1
+          group: 3
           exposed: true
           expose:
             operator_id: event_type_target_id_op
@@ -612,6 +534,93 @@ display:
           limit: true
           error_message: true
           all_label: All
+        address_country_code:
+          id: address_country_code
+          table: node__address
+          field: address_country_code
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: country
+          operator: in
+          value: {  }
+          group: 4
+          exposed: true
+          expose:
+            operator_id: address_country_code_op
+            label: Country
+            description: ''
+            use_operator: false
+            operator: address_country_code_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: country
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        address_locality:
+          id: address_locality
+          table: node__address
+          field: address_locality
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: allwords
+          value: ''
+          group: 4
+          exposed: true
+          expose:
+            operator_id: address_locality_op
+            label: City
+            description: ''
+            use_operator: false
+            operator: address_locality_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: city
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+          2: AND
+          3: AND
+          4: AND
       style:
         type: calendar_month
         options:
@@ -655,8 +664,18 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      exposed_block: false
       display_extenders: {  }
       path: calendar
+      menu:
+        type: normal
+        title: Calendar
+        description: ''
+        weight: 0
+        expanded: false
+        menu_name: main
+        parent: ''
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:

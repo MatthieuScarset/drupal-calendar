@@ -1,0 +1,13 @@
+name: Drucal
+type: theme
+base theme: claro
+description: 'A child theme for Drucal site based on Claro'
+package: Drucal
+version: VERSION
+core_version_requirement: ^10
+libraries:
+  - drucal_theme/global-styling
+regions:
+  header: 'Header'
+  content: 'Content'
+  footer: 'Footer'

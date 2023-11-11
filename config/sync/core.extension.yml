@@ -2,6 +2,7 @@ _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 module:
   address: 0
+  automated_cron: 0
   block: 0
   breakpoint: 0
   calendar_view: 0
@@ -24,6 +25,8 @@ module:
   node: 0
   page_cache: 0
   path_alias: 0
+  phpass: 0
+  queue_ui: 0
   sqlite: 0
   system: 0
   taxonomy: 0
@@ -37,6 +40,6 @@ module:
   views_taxonomy_radios_filter: 11
   minimal: 1000
 theme:
-  stark: 0
   claro: 0
+  drucal_theme: 0
 profile: minimal

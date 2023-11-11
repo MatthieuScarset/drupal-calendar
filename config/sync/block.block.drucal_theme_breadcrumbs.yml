@@ -1,0 +1,22 @@
+uuid: ada5bb6b-0af9-4f0d-962b-6596bddb66a2
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - drucal_theme
+_core:
+  default_config_hash: NjcxOBrPOiK5-38t56DwFBDVY4yer7YSlbRWXFuHe7A
+id: drucal_theme_breadcrumbs
+theme: drucal_theme
+region: header
+weight: -3
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

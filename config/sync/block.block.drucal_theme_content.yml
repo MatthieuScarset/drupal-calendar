@@ -1,0 +1,22 @@
+uuid: 9a046b37-c5de-4dc7-923d-03bf869ecd11
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - drucal_theme
+_core:
+  default_config_hash: a0Yyx1GeyKarZ4T_yXQBR_ZFKnXiFLtxAb6gWLd8nr0
+id: drucal_theme_content
+theme: drucal_theme
+region: content
+weight: 1
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

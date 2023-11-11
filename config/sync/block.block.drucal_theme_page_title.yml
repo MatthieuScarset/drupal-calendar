@@ -1,15 +1,15 @@
-uuid: dd080ce9-ded2-49b7-9670-e93711db3036
+uuid: d3624ce8-9378-4bc8-ae3e-e0428e065f2b
 langcode: en
 status: true
 dependencies:
   theme:
-    - stark
+    - drucal_theme
 _core:
-  default_config_hash: Oh72CHUkp6cj6dbrXMK2hzCsM05w9cHVoD22rMLQUfk
-id: stark_page_title
-theme: stark
-region: content
-weight: -30
+  default_config_hash: fNwDdW063tk_ktzSWzZVeQS9wzvLooVO280BQ9WrsIs
+id: drucal_theme_page_title
+theme: drucal_theme
+region: header
+weight: -2
 provider: null
 plugin: page_title_block
 settings:

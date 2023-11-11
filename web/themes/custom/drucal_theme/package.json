@@ -1,0 +1,33 @@
+{
+  "name": "drucal_theme",
+  "private": true,
+  "version": "1.0.0",
+  "author": {
+    "name": "Matthieu SCARSET",
+    "email": "m@matthieuscarset.com",
+    "url": "https://matthieuscarset.com"
+  },
+  "browserslist": [
+    "defaults and supports es6-module",
+    "maintained node versions"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postcss": "postcss css/**/*.pcss --base css --dir css/ --ext css --watch=$npm_config_watch",
+    "build": "npm run postcss --watch=false",
+    "watch": "npm run postcss --watch=true"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.15",
+    "postcss-cli": "^10.1.0",
+    "postcss-custom-media-generator": "^1.1.0",
+    "postcss-discard-comments": "^6.0.0",
+    "postcss-discard-duplicates": "^6.0.0",
+    "postcss-header": "^3.0.3",
+    "postcss-nested": "^6.0.1",
+    "postcss-normalize": "^10.0.1",
+    "postcss-preset-env": "^9.1.4",
+    "postcss-scss": "^4.0.8"
+  }
+}

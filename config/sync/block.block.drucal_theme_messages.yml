@@ -1,17 +1,17 @@
-uuid: b7eca758-5027-4688-9a4b-b7446840f062
+uuid: 37a41f1c-c435-48c8-a18a-83e9612964ba
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - stark
+    - drucal_theme
 _core:
-  default_config_hash: aeqlWs7HwctZeZC7ADcbxfqehJzBRfZKmuZz3DsH3_4
-id: stark_messages
-theme: stark
-region: highlighted
-weight: 0
+  default_config_hash: '-Ac3ISpIT0PQ-whzD7_dw0SdKi6dAbRFNWdSjOiVDqg'
+id: drucal_theme_messages
+theme: drucal_theme
+region: content
+weight: -3
 provider: null
 plugin: system_messages_block
 settings:
