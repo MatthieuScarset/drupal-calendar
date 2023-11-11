@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Contains preprocess functions for drucal_theme theme.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter() for views_exposed_form.
+ */
+function drucal_form_views_exposed_form_alter(&$form, FormStateInterface $form_state) {
+  $view = $form_state->getStorage()['view'];
+  if ($view->id() == 'calendar') {
+    $filters = ['event_format', 'event_type', 'country'];
+    foreach ($filters as $name) {
+      $form[$name]['#attributes']['data-autosubmit'] = TRUE;
+    }
+
+    $form['#attached']['library'][] = 'drucal_theme/autosubmit';
+  }
+}

@@ -3,17 +3,19 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.address
     - field.storage.node.dates
+    - field.storage.node.link
     - node.type.event
     - system.menu.main
     - taxonomy.vocabulary.event_format
-    - taxonomy.vocabulary.event_status
     - taxonomy.vocabulary.event_type
   module:
     - address
     - calendar_view
     - datetime
     - datetime_range
+    - link
     - node
     - user
     - views_taxonomy_radios_filter
@@ -33,67 +35,19 @@ display:
     display_options:
       title: Calendar
       fields:
-        title:
-          id: title
-          table: node_field_data
-          field: title
+        link:
+          id: link
+          table: node__link
+          field: link
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          entity_field: title
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
-            alter_text: false
-            make_link: false
-            absolute: false
-            word_boundary: false
-            ellipsis: false
-            strip_tags: false
-            trim: false
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: true
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        view_node:
-          id: view_node
-          table: node
-          field: view_node
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          plugin_id: entity_link
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '{{ link__uri }}'
             make_link: false
             path: ''
             absolute: false
@@ -130,9 +84,89 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          text: view
-          output_url_as_text: false
-          absolute: false
+          click_sort_column: uri
+          type: link_separate
+          settings:
+            trim_length: 80
+            url_only: false
+            url_plain: false
+            rel: nofollow
+            target: _blank
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<a href="{{ link }}" target="_blank">{{ title }}</a>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         dates:
           id: dates
           table: node__dates
@@ -186,9 +220,71 @@ display:
           type: daterange_default
           settings:
             timezone_override: ''
-            format_type: medium
+            format_type: html_time
             separator: '-'
           group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        address:
+          id: address
+          table: node__address
+          field: address
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: country_code
+          type: address_default
+          settings: {  }
+          group_column: ''
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -380,7 +476,8 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
-            placeholder: ''
+              admin: '0'
+            placeholder: 'Contains all words...'
           is_grouped: false
           group_info:
             label: ''
@@ -413,13 +510,14 @@ display:
             operator: event_format_target_id_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: format
+            identifier: event_format
             required: false
             remember: false
-            multiple: true
+            multiple: false
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
+              admin: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -435,54 +533,7 @@ display:
             group_items: {  }
           reduce_duplicates: false
           vid: event_format
-          type: radios
-          hierarchy: false
-          limit: true
-          error_message: true
-          all_label: All
-        event_status_target_id:
-          id: event_status_target_id
-          table: node__event_status
-          field: event_status_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: taxonomy_index_tid
-          operator: or
-          value: {  }
-          group: 3
-          exposed: true
-          expose:
-            operator_id: event_status_target_id_op
-            label: Status
-            description: ''
-            use_operator: false
-            operator: event_status_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: event_status
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          vid: event_status
-          type: radios
+          type: select
           hierarchy: false
           limit: true
           error_message: true
@@ -510,10 +561,11 @@ display:
             identifier: event_type
             required: false
             remember: false
-            multiple: true
+            multiple: false
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
+              admin: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -529,7 +581,7 @@ display:
             group_items: {  }
           reduce_duplicates: false
           vid: event_type
-          type: radios
+          type: select
           hierarchy: false
           limit: true
           error_message: true
@@ -657,7 +709,9 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:field.storage.node.address'
         - 'config:field.storage.node.dates'
+        - 'config:field.storage.node.link'
   page:
     id: page
     display_title: Page
@@ -686,4 +740,6 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:field.storage.node.address'
         - 'config:field.storage.node.dates'
+        - 'config:field.storage.node.link'

@@ -6,8 +6,6 @@
  */
 
 use Drupal\Component\Serialization\Json;
-use Drupal\migrate\MigrateExecutable;
-use Drupal\migrate\MigrateMessage;
 use Drupal\migrate\Plugin\MigrationInterface;
 
 /**

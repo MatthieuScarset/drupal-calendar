@@ -3,3 +3,10 @@ global-styling:
   css:
     component:
       css/site.css: {}
+
+autosubmit:
+  js:
+    js/autosubmit.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
