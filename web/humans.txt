@@ -1,0 +1,9 @@
+/* TEAM */
+Developer:    Matthieu Scarset
+Contact:      m [at] matthieuscarset.com
+Site:         https://matthieuscarset.com
+From:         France
+
+/* SITE */
+Last update:  2023/11/12
+Framework:    Drupal 10
