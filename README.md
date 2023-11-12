@@ -6,37 +6,20 @@ Get a working copy of [Drucal.org](https://drucal.org) website locally in minute
 
 ## Requirement
 
-Install [Lando](https://docs.lando.dev/drupal/) on your machine.
+Follow instructions from [the project template](https://github.com/MatthieuScarset/drupal-template#usage).
 
 ## Usage
 
-Click on the button _Use this template_ to generate your own project, then:
-
 ```bash
-git clone git@github.com:<UsernameOrOrganization>/drupal-template.git drucal
+# Import new events from drupal.org
+lando drush migrate:import event
 
-cd drucal
-
-# Replace the project name (i.e. 'drucal').
-code .env.example    # ->  DRUSH_OPTIONS_URI=https://drucal.lndo.site
-code .lando.yml      # ->  name: drucal
-
-# Create your env file now
-cp .env.example .env
-
-# Commit your changes
-git add . && git commit -m "Rename project" && git push
-
-# Start the project
-lando start
-
-# Download dependencies
-lando composer install -o
-
-# Install Drupal
-lando drush site:install --existing-config -y
-lando drush user:password admin admin
-lando drush user:login # -> Ctrl+Click the URL to open your site :)
+# Import new and update all events.
+lando drush migrate:import event --update
 ```
 
-Start to build things!
+### Credits
+
+- [Matthieu Scarset](https://matthieuscarset.com/)
+- [Calendar View](https://drupal.org/project/calendar_view) contrib module.
+- [Drupal Rest/JSON API](https://www.drupal.org/drupalorg/docs/apis/rest-and-other-apis) documentation.
