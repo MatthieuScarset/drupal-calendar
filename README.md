@@ -1,8 +1,6 @@
-# Drupal project template
+# Drupal Calendar
 
-Get a working Drupal website locally in minutes with this fine-tuned template.
-
-Based on the great [Drupal Composer project](https://github.com/drupal-composer/drupal-project).
+Get a working copy of [Drucal.org](https://drucal.org) website locally in minutes.
 
 ## Requirement
 
