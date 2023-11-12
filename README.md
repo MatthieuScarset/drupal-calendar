@@ -1,5 +1,7 @@
 # Drupal Calendar
 
+![image](https://github.com/MatthieuScarset/drupal-calendar/assets/7369593/8b75b16b-f29b-44d2-9b64-b022972dd0a1)
+
 Get a working copy of [Drucal.org](https://drucal.org) website locally in minutes.
 
 ## Requirement
