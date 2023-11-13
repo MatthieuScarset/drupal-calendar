@@ -13,4 +13,4 @@ find . -type f -name 'PATCHES.txt' -delete
 # Delete markdown files except licenses.
 find web -type f -name "*.md" -not -name "LICENSE*" -delete
 # Delete txt files except licenses.
-find web -type f -name "*.txt" -not -name "humans*" -not -name "LICENSE*" -not -name "COPYRIGHT*" -delete
+find web -type f -name "*.txt" -not -name "salt*" -not -name "humans*" -not -name "LICENSE*" -not -name "COPYRIGHT*" -delete
