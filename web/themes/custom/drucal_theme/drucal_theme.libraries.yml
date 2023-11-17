@@ -3,6 +3,8 @@ global-styling:
   css:
     component:
       css/site.css: {}
+  js:
+    js/analytics.js: {}
 
 autosubmit:
   js:
