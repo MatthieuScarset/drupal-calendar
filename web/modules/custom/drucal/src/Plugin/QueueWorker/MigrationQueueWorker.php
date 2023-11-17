@@ -21,6 +21,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class MigrationQueueWorker extends QueueWorkerBase implements ContainerFactoryPluginInterface {
 
   /**
+   * The logger channel.
+   *
+   * @var \Psr\Log\LoggerInterface
+   */
+  protected $logger;
+
+  /**
    * The migration plugin manager.
    *
    * @var \Drupal\migrate\Plugin\MigrationPluginManagerInterface
@@ -32,6 +39,7 @@ class MigrationQueueWorker extends QueueWorkerBase implements ContainerFactoryPl
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     $instance = new static($configuration, $plugin_id, $plugin_definition);
+    $instance->logger = $container->get('logger.channel.drucal');
     $instance->manager = $container->get('plugin.manager.migration');
     return $instance;
   }
@@ -45,13 +53,17 @@ class MigrationQueueWorker extends QueueWorkerBase implements ContainerFactoryPl
       $migration = $this->manager->createInstance($migration_id);
       // update existing entity imported.
       $migration->getIdMap()->prepareUpdate();
+      // force stop migration.
+      $migration->setStatus(MigrationInterface::STATUS_IDLE);
       $executable = new MigrateExecutable($migration, new MigrateMessage());
-
+      $this->logger->notice('Running migration: ' . $migration_id);
       try {
         // Run the migration.
         $executable->import();
+        $this->logger->notice('Finished migration: ' . $migration_id);
       } catch (\Exception $e) {
-        $migration->setStatus(MigrationInterface::STATUS_IDLE);
+        // Log the exception.
+        $this->logger->error($e->getMessage());
       }
     }
   }

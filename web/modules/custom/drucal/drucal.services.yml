@@ -1,0 +1,4 @@
+services:
+  logger.channel.drucal:
+    class: Drupal\Core\Logger\LoggerChannel
+    arguments: ['drucal']
