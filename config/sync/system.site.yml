@@ -3,8 +3,8 @@ _core:
 langcode: en
 uuid: 277e8ead-bcad-4762-b769-7ce1693e4247
 name: Drucal
-mail: admin@example.com
-slogan: ''
+mail: m@matthieuscarset.com
+slogan: 'Browse events from drupal.org with ease in a dynamic Calendar view!'
 page:
   403: ''
   404: ''

@@ -298,7 +298,7 @@ display:
         type: calendar_month
         options:
           offset: 0
-          display_reset: 1
+          display_reset: 0
           use_previous_next: 0
           label_format: F
       exposed_form:
@@ -374,19 +374,21 @@ display:
           group: 1
           exposed: false
           expose:
-            operator_id: ''
-            label: ''
+            operator_id: dates_value_op
+            label: 'Date of event (dates)'
             description: ''
             use_operator: false
-            operator: ''
+            operator: dates_value_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: ''
+            identifier: dates_value
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
+              anonymous: '0'
+              admin: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: ''
@@ -419,19 +421,21 @@ display:
           group: 1
           exposed: false
           expose:
-            operator_id: ''
-            label: ''
+            operator_id: dates_end_value_op
+            label: 'Date of event (dates:end_value)'
             description: ''
             use_operator: false
-            operator: ''
+            operator: dates_end_value_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: ''
+            identifier: dates_end_value
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
+              anonymous: '0'
+              admin: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: ''
@@ -477,7 +481,7 @@ display:
               authenticated: authenticated
               anonymous: '0'
               admin: '0'
-            placeholder: 'Contains all words...'
+            placeholder: 'Press enter to search'
           is_grouped: false
           group_info:
             label: ''
@@ -683,7 +687,7 @@ display:
           calendar_fields:
             dates: dates
           calendar_weekday_start: '1'
-          calendar_timestamp: today
+          calendar_timestamp: 'this month'
       row:
         type: fields
       query:
@@ -696,7 +700,18 @@ display:
           query_tags: {  }
       relationships: {  }
       use_ajax: true
-      header: {  }
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: false
+          content: "<p>\r\nThis website is built with Drupal (10) and the <a href=\"https://www.drupal.org/project/calendar_view\">Calendar View</a> module.\r\n<br>\r\nEvents are imported/updated from the <a href=\"https://www.drupal.org/drupalorg/docs/apis/rest-and-other-apis\">Drupal.org APIs</a> with a custom migration running every 3 hours.\r\n<br>\r\n<em>Very long</em> events are not displayed - if event lasts more than one month.\r\n</p>\r\n<p>\r\n<small>\r\n💻 View <a href=\"https://github.com/MatthieuScarset/drupal-calendar\">the full source code on GitHub</a>.\r\n<br>\r\n💙 Made with love and a bit of sleep deprivation by <a href=\"https://matthieuscarset.com/\">Matthieu Scarset</a>.\r\n</small>\r\n</p>"
+          tokenize: false
       footer: {  }
       display_extenders: {  }
     cache_metadata:

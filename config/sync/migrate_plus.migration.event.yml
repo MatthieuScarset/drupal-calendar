@@ -18,10 +18,9 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
   track_changes: true
-  source_url: 'https://www.drupal.org/api-d7/node.json?type=event'
+  source_url: 'https://www.drupal.org/api-d7/node.json?type=event&sort=field_date_of_event&direction=DESC'
   urls:
     callback: drucal_get_urls_to_import
-  skip_count: true
   item_selector: list
   fields:
     -
